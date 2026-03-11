@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA Officials Cross-Referencer</title>
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo"></div>
+                <h2>Ex - Officio Delegates Finder</h2>
+            </div>
+            
+            <div class="filters">
+                <div class="form-group">
+                    <label for="countySelect">Select Counties</label>
+                    <p class="help-text">Hold Ctrl/Cmd to select multiple</p>
+                    <select id="countySelect" multiple class="custom-select">
+                        <option value="All" selected>All Counties</option>
+                        <!-- Counties populated dynamically -->
+                    </select>
+                </div>
+
+                <div class="form-group toggle-group">
+                    <label class="switch">
+                        <input type="checkbox" id="republicanToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label">Only Registered Republicans</span>
+                </div>
+                
+                <button id="searchBtn" class="primary-btn">
+                    <span class="btn-text">Search Officials</span>
+                    <div class="loader hidden" id="searchLoader"></div>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="results-info">
+                    <h1>Results</h1>
+                    <span class="badge" id="resultsCount">0 Found</span>
+                </div>
+                <button id="downloadBtn" class="secondary-btn" disabled>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 10V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.6665 6.66663L7.99984 9.99996L11.3332 6.66663" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 10V2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Export CSV
+                </button>
+            </header>
+
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>County</th>
+                            <th>Municipality</th>
+                            <th>Committee</th>
+                            <th>Name</th>
+                            <th>Role / Year</th>
+                            <th class="repub-col hidden">Voter Address</th>
+                            <th class="repub-col hidden">Phone</th>
+                            <th class="repub-col hidden">Voter ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                <div class="empty-icon">🔍</div>
+                                Select your filters and click Search to begin
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Axios for API calls -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
