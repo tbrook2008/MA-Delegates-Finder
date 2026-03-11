@@ -157,13 +157,22 @@ def filter_data():
         # Alphabetical by County -> Municipality -> Last Name
         # We need a small helper to extract last name for sorting
         def get_last_name(r):
-            parts = str(r['Name']).split()
-            return parts[-1].lower() if parts else ''
+            parts = str(r.get('Name', '')).strip().split()
+            if not parts:
+                return ''
             
-        # First sort by Last Name, then Municipality, then County (Python's sort is stable)
-        results.sort(key=get_last_name)
-        results.sort(key=lambda x: str(x['Municipality']).lower())
-        results.sort(key=lambda x: str(x['County']).lower())
+            # Ignore common suffixes like Jr., Sr., III, etc.
+            suffixes = {'jr', 'sr', 'ii', 'iii', 'iv', 'v', 'jr.', 'sr.'}
+            if len(parts) > 1 and parts[-1].lower() in suffixes:
+                return parts[-2].lower()
+            return parts[-1].lower()
+            
+        # Sort sequentially by County, then Municipality, then Last Name
+        results.sort(key=lambda x: (
+            str(x.get('County', '')).strip().lower(),
+            str(x.get('Municipality', '')).strip().lower(),
+            get_last_name(x)
+        ))
         
         return jsonify({
             "success": True, 
