@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             headers.push('Address', 'Phone', 'StateVoterId');
         }
 
-        let csvContent = "data:text/csv;charset=utf-8," 
-            + headers.join(",") + "\n";
+        // Use BOM to ensure Excel opens UTF-8 correctly
+        let csvContent = "\uFEFF" + headers.join(",") + "\n";
 
         currentData.forEach(row => {
             // Basic string escaping for CSV
