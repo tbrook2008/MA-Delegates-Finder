@@ -118,8 +118,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Cross reference county officials with voters')
     parser.add_argument('county_name', help='Name of the county to process (e.g. "Norfolk", "Plymouth")')
     parser.add_argument('voters_file', help='Path to the CSV file with Republican voters for this county/counties')
-    parser.add_argument('--officials_file', default=r'c:\Users\tbroo\Desktop\Coding\MA_Municipal_Officials.xlsx')
-    parser.add_argument('--tracker_file', default=r'c:\Users\tbroo\Desktop\Coding\2026 Ex-Officio Delegate Tracker.xlsx')
+    parser.add_argument('--officials_file', default='MA_Municipal_Officials.xlsx')
+    parser.add_argument('--tracker_file', default='2026 Ex-Officio Delegate Tracker.xlsx')
     
     args = parser.parse_args()
     process_county(args.county_name, args.officials_file, args.voters_file, args.tracker_file)

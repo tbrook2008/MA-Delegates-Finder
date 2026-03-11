@@ -5,14 +5,14 @@ import shutil
 import re
 import os
 
-excel_path = r'c:\Users\tbroo\Desktop\Coding\2026 Ex-Officio Delegate Tracker.xlsx'
+excel_path = '2026 Ex-Officio Delegate Tracker.xlsx'
 
 # Load the exact matches found previously
 # We will just do the match again quickly to get all fields from repubs
-officials = pd.read_excel(r'c:\Users\tbroo\Desktop\Coding\MA_Municipal_Officials.xlsx')
+officials = pd.read_excel('MA_Municipal_Officials.xlsx')
 norfolk_officials = officials[officials['County'].str.lower() == 'norfolk'].copy()
 
-repubs = pd.read_csv(r'c:\Users\tbroo\Desktop\Coding\MyExport_2820.csv', dtype=str)
+repubs = pd.read_csv('MyExport_2820.csv', dtype=str)
 
 def clean_name(name):
     if pd.isna(name): return ''

@@ -1,8 +1,8 @@
 import pandas as pd
 import re
 
-officials_file = r'c:\Users\tbroo\Desktop\Coding\MA_Municipal_Officials.xlsx'
-voters_file = r'c:\Users\tbroo\Desktop\Coding\MyExport_2820.csv'
+officials_file = 'MA_Municipal_Officials.xlsx'
+voters_file = 'MyExport_2820.csv'  # or whatever your current export file is named
 
 try:
     officials = pd.read_excel(officials_file)

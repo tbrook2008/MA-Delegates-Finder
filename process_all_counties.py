@@ -119,7 +119,7 @@ def process_all_counties(officials_file, voters_file, tracker_file):
     print("Done!")
 
 if __name__ == "__main__":
-    officials_file = r'c:\Users\tbroo\Desktop\Coding\MA_Municipal_Officials.xlsx'
-    voters_file = r'c:\Users\tbroo\Desktop\Coding\MyExport_3627.csv'
-    tracker_file = r'c:\Users\tbroo\Desktop\Coding\2026 Ex-Officio Delegate Tracker.xlsx'
+    officials_file = 'MA_Municipal_Officials.xlsx'
+    voters_file = 'MyExport_3627.csv'  # or whatever your current export file is named
+    tracker_file = '2026 Ex-Officio Delegate Tracker.xlsx'
     process_all_counties(officials_file, voters_file, tracker_file)
