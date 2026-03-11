@@ -2,7 +2,7 @@
 
 A powerful, high-performance local web application built to quickly cross-reference Massachusetts municipal elected officials against the registered Republican voter database. It allows filtering by County, finding exact matches, and exporting the detailed results straight to a CSV.
 
-![image](https://github.com/user-attachments/assets/demo-image-placeholder) <!-- Replace with an actual screenshot of the app -->
+![image](demo_screenshot.png)
 
 ## Overview
 
